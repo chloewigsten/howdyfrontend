@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+//Import Styling
 import './App.css';
 
-function App() {
+//Import Components 
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PageNotFound from './components/PageNotFound';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import Home from './components/Home';
+
+//Import Pages 
+import Display from './pages/Display';
+import ShowImage from './pages/ShowImage';
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className ='App'>
+      <Header />
+      <Routes> 
+        <Route path='/' element={<Home />} />
+        <Route path='/search/' element={<Display />} />
+        <Route path='/show/' element={<ShowImage />} />
+        <Route path='*' element={<Navigate to='/page-not-found' />} />
+        <Route path='/page-not-found' element={<PageNotFound />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
